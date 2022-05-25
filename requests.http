@@ -1,0 +1,12 @@
+POST https://localhost:7198/api/cards/history HTTP/1.1
+content-type: application/json
+
+{
+    "cardId":"TestCardId"
+}
+
+GET https://localhost:7198/api/cards/TestCardId/history HTTP/1.1
+content-type: application/json
+
+GET https://localhost:7198/api/cards HTTP/1.1
+content-type: application/json

@@ -1,0 +1,54 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web App - Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapp",
+      "program": "${workspaceFolder}/WorkTimeMonitor.Web/bin/Debug/net6.0/WorkTimeMonitor.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/WorkTimeMonitor.Web",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "ssh",
+        "pipeArgs": ["pi@192.168.1.112"],
+        "debuggerPath": "/home/pi/vsdbg/vsdbg"
+      }
+    },
+    {
+      "preLaunchTask": "deploy",
+      "name": "WorkTimeMonitor.RfidReader",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "/home/pi/.dotnet/dotnet",
+      "args": ["/home/pi/work-time-monitor/WorkTimeMonitor.RfidReader.dll"],
+      "cwd": "/home/pi/work-time-monitor",
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "ssh",
+        "pipeArgs": ["pi@192.168.1.112"],
+        "debuggerPath": "/home/pi/vsdbg/vsdbg"
+      }
+    }
+  ]
+}
